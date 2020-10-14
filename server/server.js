@@ -11,5 +11,14 @@ wss.on('connection', ((ws) => {
             }
         });
     });
+
+    //ping
+    setInterval(() => {
+        wss.clients.forEach((client) => {
+            if (client != ws) {
+                client.send('Oh hi Marc');
+            }
+        });
+    }, 10000);
 }));
 
